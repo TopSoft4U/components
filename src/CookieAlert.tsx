@@ -1,15 +1,15 @@
+import {_NextI18Next} from "@topsoft4u/utils/dist/i18n";
 import Cookies from "js-cookie";
 import React from "react";
 
-import {useTranslation} from "../../i18n";
-
 type CookiesProps = {
-  text: string;
-  closeButtonText: string;
+  text?: string;
+  closeButtonText?: string;
 }
 
 const CookieAlert: React.FC<CookiesProps> = ({text, closeButtonText}) => {
-  const {t} = useTranslation("common");
+  const {useTranslation} = _NextI18Next.getInstance();
+  const {t} = useTranslation("shared");
   const [show, setShow] = React.useState(() => Cookies.get("cookie_accepted") !== "1");
 
   const close = React.useCallback(() => {
@@ -21,8 +21,8 @@ const CookieAlert: React.FC<CookiesProps> = ({text, closeButtonText}) => {
     return null;
 
   return <div role="dialog" className="cookies" aria-live="polite">
-    <p>{t("We use cookies to track usage and preferences.")}</p>
-    <button onClick={close}>{t("I understand")}</button>
+    <p>{text || t("We use cookies to track usage and preferences.")}</p>
+    <button className="btn btn-outline-light" onClick={close}>{closeButtonText || t("I understand")}</button>
   </div>;
 };
 

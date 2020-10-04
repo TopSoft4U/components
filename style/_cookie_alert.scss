@@ -17,6 +17,11 @@
 
   button {
     margin-left: 1rem;
+    border-radius: $border-radius;
+    border-width: $border-width;
+    padding: $btn-padding-y-sm $btn-padding-x-sm;
+    font-size: $font-size-sm;
+    background: none;
   }
 
   .close {

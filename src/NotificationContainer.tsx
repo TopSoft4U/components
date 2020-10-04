@@ -1,5 +1,6 @@
-import {NotificationManager, NotificationType} from "@topsoft4u/utils/dist/NotificationManager";
 import React from "react";
+
+import {NotificationManager, NotificationType} from "./NotificationManager";
 
 export type NotificationProps = NotificationType & {
   onClose: (id: number) => void;

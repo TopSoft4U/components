@@ -1,5 +1,11 @@
 {
-  "extends": "../tsconfig/tsconfig.es.json",
+  "extends": "../tsconfig/tsconfig.cjs.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "sourceRoot": "src",
+    "rootDir": "src",
+    "jsx": "react"
+  },
   "exclude": [
     "out",
     "dist",
@@ -7,6 +13,6 @@
     "public"
   ],
   "include": [
-    "src",
+    "src"
   ]
 }
