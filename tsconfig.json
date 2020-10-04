@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig/tsconfig.es.json",
+  "exclude": [
+    "out",
+    "dist",
+    "node_modules",
+    "public"
+  ],
+  "include": [
+    "src",
+  ]
+}

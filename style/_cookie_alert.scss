@@ -1,0 +1,32 @@
+.cookies {
+  align-items: center;
+  background: $primary;
+  bottom: 0;
+  color: $white;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  padding: 0.5rem 1rem;
+  position: fixed;
+  right: 0;
+  z-index: 1000;
+
+  p {
+    margin-bottom: 0;
+  }
+
+  button {
+    margin-left: 1rem;
+  }
+
+  .close {
+    float: none;
+    color: inherit;
+    text-shadow: none;
+    opacity: 1;
+    font-size: 1.5rem;
+    line-height: 1;
+    font-weight: 600;
+    padding: 0 .5rem
+  }
+}
