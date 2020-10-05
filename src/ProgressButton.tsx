@@ -1,6 +1,7 @@
-import {_NextI18Next} from "@topsoft4u/utils/dist/i18n";
 import React from "react";
-import {Button, ButtonProps, Spinner} from "react-bootstrap";
+import {_NextI18Next} from "@topsoft4u/utils/dist/i18n";
+import Button, {ButtonProps} from "react-bootstrap/Button";
+import Spinner from "react-bootstrap/Spinner";
 
 const ProgressButton: React.FC<ProgressButtonProps> = ({inProgress, children, progressText, ...props}) => {
   const {useTranslation} = _NextI18Next.getInstance();

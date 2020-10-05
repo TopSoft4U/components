@@ -1,6 +1,7 @@
 import {_NextI18Next} from "@topsoft4u/utils/dist/i18n";
 import Cookies from "js-cookie";
 import React from "react";
+import Button from "react-bootstrap/Button";
 
 type CookiesProps = {
   text?: string;
@@ -22,7 +23,9 @@ const CookieAlert: React.FC<CookiesProps> = ({text, closeButtonText}) => {
 
   return <div role="dialog" className="cookies" aria-live="polite">
     <p>{text || t("We use cookies to track usage and preferences.")}</p>
-    <button className="btn btn-outline-light" onClick={close}>{closeButtonText || t("I understand")}</button>
+    <Button variant="outline-light" onClick={close}>
+      {closeButtonText || t("I understand")}
+    </Button>
   </div>;
 };
 
