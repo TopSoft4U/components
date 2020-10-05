@@ -1,5 +1,5 @@
-import {fetcher, RequestParams} from "../fetcher";
 import React from "react";
+import {fetcher, RequestParams} from "../fetcher";
 
 export const useAPI = <T>(url: string): [(params: RequestParams) => Promise<T | undefined>, boolean] => {
   const [inProgress, setInProgress] = React.useState(false);

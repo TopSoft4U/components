@@ -1,10 +1,9 @@
 import {_NextI18Next} from "@topsoft4u/utils/dist/i18n";
 import {NotificationManager} from "./NotificationManager";
 
-// const t = (str: string) => str;
 export const fetcher = async <T>(url: string, params: RequestParams = {}): Promise<T | undefined> => {
   const {i18n} = _NextI18Next.getInstance();
-  const t = i18n.t.bind(i18n)
+  const t = i18n.t.bind(i18n);
 
   let method = params.method || "GET";
 
