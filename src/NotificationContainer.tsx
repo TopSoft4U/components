@@ -2,8 +2,9 @@ import React from "react";
 
 import {NotificationManager, NotificationType} from "./NotificationManager";
 
+type NotificationOnClose = (id: number) => void;
 export type NotificationProps = NotificationType & {
-  onClose: (id: number) => void;
+  onClose: NotificationOnClose;
 }
 
 export type NotificationContainerProps = {
@@ -34,4 +35,23 @@ export const NotificationContainer: React.FC<NotificationContainerProps> = ({tag
   return <div className="notifications">
     {items.map(notification => <Tag key={notification.id} {...notification} onClose={onClose} />)}
   </div>;
+};
+
+export const useNotification = (id: number, onClose: NotificationOnClose, timeout = 0) => {
+  const closeTimeout = React.useRef<ReturnType<typeof setTimeout>>();
+
+  const closeNotification = React.useCallback(() => {
+    onClose(id);
+  }, [id, onClose]);
+
+  React.useEffect(() => {
+    if (timeout)
+      closeTimeout.current = setTimeout(closeNotification, timeout);
+    return () => {
+      if (timeout && closeTimeout.current)
+        clearTimeout(closeTimeout.current);
+    };
+  }, [closeNotification, timeout]);
+
+  return {closeNotification};
 };

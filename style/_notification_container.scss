@@ -1,7 +1,10 @@
+$notifications-zindex: 1500 !default;
+
 .notifications {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
 
+  z-index: $notifications-zindex;
 }
