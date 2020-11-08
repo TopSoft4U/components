@@ -2,7 +2,7 @@
   "name": "@topsoft4u/components",
   "sideEffects": false,
   "license": "UNLICENSED",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Shared React components",
   "repository": "git://github.com/TopSoft4U/components.git",
   "publishConfig": {
