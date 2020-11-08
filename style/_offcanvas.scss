@@ -1,0 +1,81 @@
+$offcanvas-width: 250px !default;
+$offcanvas-height: 250px !default;
+$offcanvas-animation-duration: .3s;
+$offcanvas-transition: transform $offcanvas-animation-duration ease !default;
+$offcanvas-offcanvas-transition: opacity $offcanvas-animation-duration linear, visibility $offcanvas-animation-duration linear !default;
+$offcanvas-zindex: 1500 !default;
+
+.offcanvas {
+  background: #fff;
+  bottom: 0;
+  position: fixed;
+  transition: $offcanvas-transition;
+  z-index: $offcanvas-zindex + 1;
+
+  &.side-left {
+    left: 0;
+    transform: translateX(-100%);
+    width: $offcanvas-width;
+
+    &.open {
+      transform: translateX(0%);
+    }
+  }
+
+  &.side-right {
+    right: 0;
+    transform: translateX(100%);
+    width: $offcanvas-width;
+
+    &.open {
+      transform: translateX(0%);
+    }
+  }
+
+  &.side-top {
+    height: $offcanvas-height;
+    left: 0;
+    right: 0;
+    top: 0;
+    transform: translateY(-100%);
+
+    &.open {
+      transform: translateY(0%);
+    }
+  }
+
+  &.side-bottom {
+    height: $offcanvas-height;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(100%);
+
+    &.open {
+      transform: translateY(0%);
+    }
+  }
+}
+
+.offcanvas-overlay {
+  transition: $offcanvas-offcanvas-transition;
+  background: rgba(0, 0, 0, 0.1);
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: $offcanvas-zindex;
+  //display: none;
+  visibility: hidden;
+  opacity: 0;
+  //height: 0;
+
+  &.open {
+    //display: block;
+    visibility: visible;
+    opacity: 1;
+    //height: auto;
+  }
+}

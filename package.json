@@ -18,7 +18,7 @@
   "scripts": {
     "build": "yarn run clean && yarn run lint && tsc",
     "clean": "rimraf dist",
-    "watch": "yarn run clean && rimraf tsconfig.tsbuildinfo && tsc -w --incremental",
+    "watch": "yarn run clean && rimraf tsconfig.tsbuildinfo && tsc -b -w --incremental",
     "lint": "eslint --ext js,jsx,ts,tsx src --fix",
     "preversion": "yarn run build",
     "postpublish": "git push --all origin -u && git push --tags origin"
@@ -26,8 +26,8 @@
   "dependencies": {
     "@topsoft4u/utils": "latest",
     "bootstrap": "^4.5.2",
+    "classnames": "^2.2.6",
     "js-cookie": "^2.2.1",
-    "next": "^9.5.3",
     "react": "^16.13.1",
     "react-bootstrap": "^1.3.0",
     "react-dom": "^16.13.1",

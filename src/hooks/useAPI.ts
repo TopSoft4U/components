@@ -1,17 +1,17 @@
 import React from "react";
-import {fetcher, RequestParams} from "../fetcher";
+import {fetcher, RequestMethod, RequestParams} from "../fetcher";
 
-export const useAPI = <T>(url: string): [(params: RequestParams) => Promise<T | undefined>, boolean] => {
+export const useAPI = <T>(url: string, method: RequestMethod = "GET"): [(params?: RequestParams) => Promise<T | undefined>, boolean] => {
   const [inProgress, setInProgress] = React.useState(false);
 
-  const execute = React.useCallback(async (params: RequestParams) => {
+  const execute = React.useCallback(async (params?: RequestParams) => {
     setInProgress(true);
 
-    const result = await fetcher<T>(url, params);
+    const result = await fetcher<T>(url, {method, ...(params || {})});
 
     setInProgress(false);
     return result;
-  }, [url]);
+  }, [method, url]);
 
   return [execute, inProgress];
 };

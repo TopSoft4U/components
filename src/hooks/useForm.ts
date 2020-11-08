@@ -1,29 +1,32 @@
-import {Dictionary} from "@topsoft4u/utils/dist/types";
 import React from "react";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type FormValue = any;
-export type FormDictionary = Dictionary<FormValue>;
+export type FormDictionary = Record<string, FormValue>;
 
-type UseForm = (initialState?: FormDictionary) => {
+type UseForm = <T extends object>(initialState?: FormDictionary) => {
   form: FormDictionary;
-  inputProps: (name: string) => { onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; name: string; checked?: boolean; value?: FormValue };
+  inputProps: (name: keyof T) => {
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    name: keyof T | string;
+    checked?: boolean;
+    value?: FormValue
+  };
   resetForm: () => void;
   handleFormChange: (key: string, value: FormValue) => void;
   setForm: (value: (((prevState: FormDictionary) => FormDictionary) | FormDictionary)) => void;
   handleFormChangeMulti: (obj: FormDictionary) => void;
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-};
+}
 
-export const useForm: UseForm = (initialState = {}) => {
-  const [form, setForm] = React.useState(initialState);
+export const useForm: UseForm = <T>(initialState = {}) => {
+  const [form, setForm] = React.useState<any>(initialState);
 
   const handleFormChange = React.useCallback((key: string, value: FormValue) => {
-    setForm(prevForm => ({...prevForm, [key]: value}));
+    setForm((prevForm: object) => ({...prevForm, [key]: value}));
   }, []);
 
   const handleFormChangeMulti = React.useCallback((obj: FormDictionary) => {
-    setForm(prevForm => ({...prevForm, ...obj}));
+    setForm((prevForm: object) => ({...prevForm, ...obj}));
   }, []);
 
   const handleInputChange = React.useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +40,7 @@ export const useForm: UseForm = (initialState = {}) => {
 
   const resetForm = () => setForm(initialState);
 
-  const inputProps = (name: string) => {
+  const inputProps = (name: keyof T) => {
     const valProps: { checked?: boolean, value?: FormValue } = {checked: undefined, value: undefined};
     if (typeof form[name] === "boolean")
       valProps.checked = (form[name] as boolean) || false;
