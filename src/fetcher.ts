@@ -56,13 +56,14 @@ export const fetcher = async <T>(url: string, params: RequestParams = {}): Promi
         return undefined;
       case 401:
         NotificationManager.error({message: t("You must be signed in to perform this action", {ns: "api"}), title});
-        console.log(window.location);
-        await Router.push({
-          pathname: "/login",
-          query: {
-            redirect: window.location.href
-          }
-        });
+        if (Router && window && window.location) {
+          await Router.push({
+            pathname: "/login",
+            query: {
+              redirect: window.location.href
+            }
+          });
+        }
         return undefined;
       case 403:
         NotificationManager.error({message: t("You do not have permissions to perform this action", {ns: "api"}), title});
