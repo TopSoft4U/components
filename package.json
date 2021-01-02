@@ -1,6 +1,5 @@
 {
   "name": "@topsoft4u/components",
-  "private": true,
   "license": "UNLICENSED",
   "version": "1.0.4",
   "description": "Shared React components",
@@ -21,7 +20,7 @@
     "deps:check": "npx npm-check-updates --dep prod,dev,optional",
     "deps:update": "npx npm-check-updates --dep prod,dev,optional -u",
 
-    "build": "yarn run clean && yarn run lint && tsc",
+    "build": "yarn run clean && yarn run eslint && tsc",
     "generate_indexes": "barrelsby --delete --directory ./src",
     "preversion": "yarn run build",
     "postpublish": "git push --all origin -u && git push --tags origin"
