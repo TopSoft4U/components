@@ -1,17 +1,18 @@
 {
-  "extends": "../tsconfig/tsconfig.cjs.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist",
+    "jsx": "react",
+    "noEmit": false,
     "rootDir": "src",
-    "jsx": "react"
+    "outDir": "dist",
+    "composite": false,
   },
   "exclude": [
-    "out",
-    "dist",
     "node_modules",
-    "public"
+    "dist"
   ],
   "include": [
-    "src"
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ]
 }

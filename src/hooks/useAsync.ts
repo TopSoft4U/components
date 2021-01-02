@@ -1,6 +1,6 @@
 import React from "react";
 
-const enum AsyncStatus {
+enum AsyncStatus {
   Idle,
   InProgress,
   Success,

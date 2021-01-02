@@ -1,10 +1,9 @@
-import {_NextI18Next} from "@topsoft4u/utils/dist/i18n";
 import Router from "next/router";
+import getT from "next-translate/getT";
 import {NotificationManager} from "./NotificationManager";
 
 export const fetcher = async <T>(url: string, params: RequestParams = {}): Promise<T | undefined> => {
-  const {i18n} = _NextI18Next.getInstance();
-  const t = i18n.t.bind(i18n);
+  const t = await getT("pl", "api");
 
   let method = params.method || "GET";
 
@@ -66,18 +65,18 @@ export const fetcher = async <T>(url: string, params: RequestParams = {}): Promi
         }
         return undefined;
       case 403:
-        NotificationManager.error({message: t("You do not have permissions to perform this action", {ns: "api"}), title});
+        NotificationManager.error({message: t("You do not have permissions to perform this action"), title});
         return undefined;
       case 404:
-        NotificationManager.error({message: t("Action does not exists", {ns: "api"}), title});
+        NotificationManager.error({message: t("Action does not exists"), title});
         return undefined;
       default:
       case 500:
-        NotificationManager.error({message: t("This is not your fault, that's us. We'll fix this as soon as we can.", {ns: "api"}), title});
+        NotificationManager.error({message: t("This is not your fault, that's us. We'll fix this as soon as we can."), title});
         return undefined;
     }
   } catch (e) {
-    NotificationManager.error({message: t("This is not your fault, that's us. We'll fix this as soon as we can.", {ns: "api"}), title: t(e.message, {ns: "api"})});
+    NotificationManager.error({message: t("This is not your fault, that's us. We'll fix this as soon as we can."), title: t(e.message)});
     return undefined;
   }
 };

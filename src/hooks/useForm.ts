@@ -3,7 +3,7 @@ import React from "react";
 export type FormValue = any;
 export type FormDictionary = Record<string, FormValue>;
 
-type UseForm = <T extends object>(initialState?: FormDictionary) => {
+type UseForm = <T extends object = any>(initialState?: FormDictionary) => {
   form: FormDictionary;
   inputProps: (name: keyof T) => {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

@@ -8,7 +8,7 @@ const uniqId = (prefix = "id") => {
   return `${prefix}${lastId}`;
 };
 
-const XInput: React.FC<XInputProps> = ({label, required, error, success, help, value, ...props}) => {
+export const XInput: React.FC<XInputProps> = ({label, required, error, success, help, value, ...props}) => {
   const [id] = React.useState(() => uniqId("label"));
   const inputProps: FormControlProps = {
     value: value || "",
@@ -44,5 +44,3 @@ type XInputProps = FormControlProps & {
   help?: string;
   rows?: number;
 }
-
-export default XInput;

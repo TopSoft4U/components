@@ -1,10 +1,9 @@
 import React from "react";
-import {_NextI18Next} from "@topsoft4u/utils/dist/i18n";
+import useTranslation from "next-translate/useTranslation";
 import Button, {ButtonProps} from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
 
-const ProgressButton: React.FC<ProgressButtonProps> = ({inProgress, children, progressText, ...props}) => {
-  const {useTranslation} = _NextI18Next.getInstance();
+export const ProgressButton: React.FC<ProgressButtonProps> = ({inProgress, children, progressText, ...props}) => {
   const {t} = useTranslation("shared");
 
   let content = children, disabled = props.disabled;
@@ -26,5 +25,3 @@ type ProgressButtonProps = ButtonProps & {
   inProgress: boolean;
   progressText?: string;
 };
-
-export default ProgressButton;

@@ -11,7 +11,7 @@ type OffCanvasProps = {
   withCloseButton?: boolean;
 };
 
-const OffCanvas: React.FC<OffCanvasProps> = (
+export const OffCanvas: React.FC<OffCanvasProps> = (
   {
     isOpen, toggle,
     className, side = "right",
@@ -66,5 +66,3 @@ const OffCanvas: React.FC<OffCanvasProps> = (
     {withBackdrop && <div aria-hidden={isOpen ? "true" : "false"} className={offCn} onClick={toggle} />}
   </>;
 };
-
-export default OffCanvas;

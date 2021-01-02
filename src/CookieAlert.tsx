@@ -1,15 +1,14 @@
-import {_NextI18Next} from "@topsoft4u/utils/dist/i18n";
 import Cookies from "js-cookie";
 import React from "react";
 import Button from "react-bootstrap/Button";
+import useTranslation from "next-translate/useTranslation";
 
 type CookiesProps = {
   text?: string;
   closeButtonText?: string;
 }
 
-const CookieAlert: React.FC<CookiesProps> = ({text, closeButtonText}) => {
-  const {useTranslation} = _NextI18Next.getInstance();
+export const CookieAlert: React.FC<CookiesProps> = ({text, closeButtonText}) => {
   const {t} = useTranslation("shared");
   const [show, setShow] = React.useState(() => Cookies.get("cookie_accepted") !== "1");
 
@@ -28,5 +27,3 @@ const CookieAlert: React.FC<CookiesProps> = ({text, closeButtonText}) => {
     </Button>
   </div>;
 };
-
-export default CookieAlert;
