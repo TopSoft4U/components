@@ -21,9 +21,9 @@ export const CookieAlert: React.FC<CookiesProps> = ({text, closeButtonText}) => 
     return null;
 
   return <div role="dialog" className="cookies" aria-live="polite">
-    <p>{text || t("We use cookies to track usage and preferences.")}</p>
+    <p>{text || t("cookies.text")}</p>
     <Button variant="outline-light" onClick={close}>
-      {closeButtonText || t("I understand")}
+      {closeButtonText || t("cookies.understand")}
     </Button>
   </div>;
 };

@@ -11,7 +11,7 @@ export const ProgressButton: React.FC<ProgressButtonProps> = ({inProgress, child
   if (inProgress) {
     content = <>
       <Spinner animation="border" />
-      {progressText || t("Please wait")}
+      {progressText || t("progress.wait")}
     </>;
     disabled = true;
   }

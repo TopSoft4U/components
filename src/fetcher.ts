@@ -3,7 +3,7 @@ import getT from "next-translate/getT";
 import {NotificationManager} from "./NotificationManager";
 
 export const fetcher = async <T>(url: string, params: RequestParams = {}): Promise<T | undefined> => {
-  const t = await getT("pl", "api");
+  const t = await getT("", "api");
 
   let method = params.method || "GET";
 
@@ -30,7 +30,7 @@ export const fetcher = async <T>(url: string, params: RequestParams = {}): Promi
     qs.append(key, `${queryString[key]}`);
   });
 
-  let response, result;
+  let response: Response, result;
   try {
     const baseUrl = typeof window !== "undefined" ? window.location.origin : "";
     response = await fetch(`${baseUrl}/api/${url}?${qs}`, {headers, method, body});
@@ -38,7 +38,7 @@ export const fetcher = async <T>(url: string, params: RequestParams = {}): Promi
     const contentType = response.headers.get("content-type");
     if (contentType && contentType.indexOf("application/json") !== -1) {
       result = await response.json();
-    } else if (contentType && contentType.indexOf("text/html") === -1) {
+    } else if (!contentType || contentType.indexOf("text/html") === -1) {
       result = await response.text();
     }
 
@@ -47,14 +47,14 @@ export const fetcher = async <T>(url: string, params: RequestParams = {}): Promi
 
     let title;
     if (result)
-      title = t(result, {ns: "api"});
+      title = result;
 
     switch (response.status) {
       case 400:
-        NotificationManager.error({message: t("You have to figure this out before proceeding.", {ns: "api"}), title});
+        NotificationManager.error({message: t("api:fetcher.err400"), title});
         return undefined;
       case 401:
-        NotificationManager.error({message: t("You must be signed in to perform this action", {ns: "api"}), title});
+        NotificationManager.error({message: t("api:fetcher.err401"), title});
         if (Router && window && window.location) {
           await Router.push({
             pathname: "/login",
@@ -65,18 +65,18 @@ export const fetcher = async <T>(url: string, params: RequestParams = {}): Promi
         }
         return undefined;
       case 403:
-        NotificationManager.error({message: t("You do not have permissions to perform this action"), title});
+        NotificationManager.error({message: t("api:fetcher.err403"), title});
         return undefined;
       case 404:
-        NotificationManager.error({message: t("Action does not exists"), title});
+        NotificationManager.error({message: t("api:fetcher.err404"), title});
         return undefined;
       default:
       case 500:
-        NotificationManager.error({message: t("This is not your fault, that's us. We'll fix this as soon as we can."), title});
+        NotificationManager.error({message: t("api:fetcher.err500"), title});
         return undefined;
     }
   } catch (e) {
-    NotificationManager.error({message: t("This is not your fault, that's us. We'll fix this as soon as we can."), title: t(e.message)});
+    NotificationManager.error({message: t("api:fetcher.exception"), title: t(e.message)});
     return undefined;
   }
 };
