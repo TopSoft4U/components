@@ -62,7 +62,7 @@ export const NotificationManager = new NotificationManagerClass();
 
 type NotificationObjectType = {
   message: string;
-  title?: string;
+  title?: string | null;
   timeout?: number;
   onClick?: NotificationOnClick;
   onClickText?: string;

@@ -32,8 +32,8 @@ export const fetcher = async <T>(url: string, params: RequestParams = {}): Promi
 
   let response: Response, result;
   try {
-    const baseUrl = typeof window !== "undefined" ? window.location.origin : "";
-    response = await fetch(`${baseUrl}/api/${url}?${qs}`, {headers, method, body});
+    const basePath = process.env.NEXT_PUBLIC_API_URL;
+    response = await fetch(`${basePath}/${url}?${qs}`, {headers, method, body, credentials: "include"});
 
     const contentType = response.headers.get("content-type");
     if (contentType && contentType.indexOf("application/json") !== -1) {
