@@ -12,6 +12,7 @@ export * from "./XInput";
 export * from "./hooks/useAPI";
 export * from "./hooks/useAsync";
 export * from "./hooks/useForm";
+export * from "./hooks/useFormWithErrors";
 export * from "./hooks/useLocalStorage";
 export * from "./hooks/useQueryString";
 export * from "./hooks/useSessionStorage";
