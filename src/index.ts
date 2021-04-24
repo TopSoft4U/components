@@ -3,13 +3,11 @@
  */
 
 export * from "./CookieAlert";
-export * from "./fetcher";
 export * from "./NotificationContainer";
 export * from "./NotificationManager";
 export * from "./OffCanvas";
 export * from "./ProgressButton";
 export * from "./XInput";
-export * from "./hooks/useAPI";
 export * from "./hooks/useAsync";
 export * from "./hooks/useForm";
 export * from "./hooks/useFormWithErrors";

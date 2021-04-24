@@ -3,7 +3,7 @@
  * @export
  * @interface ModelFieldError
  */
-export interface ModelFieldError {
+export type ModelFieldError = {
   /**
    *
    * @type {string}

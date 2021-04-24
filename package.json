@@ -1,15 +1,27 @@
 {
   "name": "@topsoft4u/components",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "version": "1.0.4",
   "description": "Shared React components",
-  "repository": "git://github.com/TopSoft4U/components.git",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+  "repository": "https://github.com/TopSoft4U/components",
+  "author": {
+    "name": "Łukasz Kolasa",
+    "email": "lukasz.kolasa@topsoft4u.com",
+    "url": "https://topsoft4u.com/"
   },
-  "author": "Łukasz Kolasa",
+  "contributors": [
+    {
+      "name": "Łukasz Kolasa",
+      "email": "lukasz.kolasa@topsoft4u.com",
+      "url": "https://topsoft4u.com/"
+    }
+  ],
+  "keywords": [
+    "TopSoft4U"
+  ],
   "files": [
     "dist",
+    "src",
     "style"
   ],
   "main": "src/index.ts",
@@ -21,9 +33,7 @@
     "deps:check": "npx npm-check-updates --dep prod,dev,optional",
     "deps:update": "npx npm-check-updates --dep prod,dev,optional -u",
 
-    "generate_indexes": "barrelsby --delete --directory ./src",
-    "preversion": "yarn run build",
-    "postpublish": "git push --all origin -u && git push --tags origin"
+    "generate_indexes": "barrelsby --delete --directory ./src"
   },
   "dependencies": {
     "js-cookie": "^2.2.1"
@@ -41,6 +51,6 @@
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-bootstrap": "^1.4.0",
-    "next-translate": "^1.0.5-canary.1"
+    "next-translate": "^1.0.6"
   }
 }
