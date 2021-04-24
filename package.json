@@ -2,6 +2,8 @@
   "name": "@topsoft4u/components",
   "license": "MIT",
   "version": "1.0.5",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "description": "Shared React components",
   "repository": "https://github.com/TopSoft4U/components",
   "author": {
@@ -17,14 +19,15 @@
     }
   ],
   "keywords": [
-    "TopSoft4U"
+    "TopSoft4U",
+    "React",
+    "Components"
   ],
   "files": [
     "dist",
     "src",
     "style"
   ],
-  "main": "src/index.ts",
   "scripts": {
     "build": "yarn run clean && yarn run eslint && tsc",
     "typecheck": "tsc -p ./ --noEmit",
@@ -40,7 +43,7 @@
   },
   "devDependencies": {
     "@types/js-cookie": "^2.2.6",
-    "@types/node": "^14.14.32",
+    "@types/node": "^14.14.41",
     "@types/query-string": "^5.1.0",
     "@types/react": "^17.0.3",
     "@types/react-router-dom": "^5.1.7",
