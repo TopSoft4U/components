@@ -6,6 +6,7 @@
       "dom.iterable",
       "esnext"
     ],
+    "esModuleInterop": true,
     "jsx": "react-jsx",
     "noEmit": false,
     "rootDir": "src",

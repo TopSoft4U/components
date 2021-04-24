@@ -36,12 +36,14 @@
     "generate_indexes": "barrelsby --delete --directory ./src"
   },
   "dependencies": {
+    "query-string": "^5.1.1",
     "js-cookie": "^2.2.1"
   },
   "devDependencies": {
     "@types/js-cookie": "^2.2.6",
     "@types/node": "^14.14.32",
     "@types/react": "^17.0.3",
+    "@types/query-string": "^5.1.0",
     "@types/react-router-dom": "^5.1.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
