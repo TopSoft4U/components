@@ -16,3 +16,5 @@ export * from "./hooks/useQueryString";
 export * from "./hooks/useSessionStorage";
 export * from "./hooks/useToggle";
 export * from "./hooks/useWhyDidYouUpdate";
+export * from "./types/TS4UComponent";
+export * from "./types/ModelFieldError";

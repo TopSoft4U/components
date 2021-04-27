@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {ModelFieldError} from "../types";
+import {ModelFieldError} from "src/types/ModelFieldError";
 import {FormGenericType, useForm} from "./useForm";
 
 export const useFormWithErrors = <T extends FormGenericType<T>>(initialState: T = {} as T) => {

@@ -1,15 +1,16 @@
 import Cookies from "js-cookie";
 import React from "react";
 import Button from "react-bootstrap/Button";
-import useTranslation from "next-translate/useTranslation";
 
 type CookiesProps = {
   text?: string;
   closeButtonText?: string;
 }
 
+export const cookieAlertButtonText = "I understand";
+export const cookieAlertText = "We use cookies to track usage and preferences.";
+
 export const CookieAlert: React.FC<CookiesProps> = ({text, closeButtonText}) => {
-  const {t} = useTranslation("shared");
   const [show, setShow] = React.useState(() => Cookies.get("cookie_accepted") !== "1");
 
   const close = React.useCallback(() => {
@@ -21,9 +22,9 @@ export const CookieAlert: React.FC<CookiesProps> = ({text, closeButtonText}) => 
     return null;
 
   return <div role="dialog" className="cookies" aria-live="polite">
-    <p>{text || t("cookies.text")}</p>
+    <p>{text || cookieAlertText}</p>
     <Button variant="outline-light" onClick={close}>
-      {closeButtonText || t("cookies.understand")}
+      {closeButtonText || cookieAlertButtonText}
     </Button>
   </div>;
 };

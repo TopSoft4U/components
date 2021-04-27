@@ -42,25 +42,28 @@
     "query-string": "^5.1.1"
   },
   "devDependencies": {
+    "@topsoft4u/eslint-config": "^1.0.25",
+    "eslint": "^7.25.0",
+    "typescript": "^4.2.4",
     "@types/js-cookie": "^2.2.6",
     "@types/node": "^14.14.41",
     "@types/query-string": "^5.1.0",
     "@types/react": "^17.0.3",
     "@types/react-router-dom": "^5.1.7",
-    "next": "^10.1.3",
-    "next-translate": "^1.0.6",
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.2",
-    "react-dom": "^17.0.2",
-    "react-router-dom": "^5.2.0"
+    "styled-components": "^5.2.3",
+    "@types/styled-components": "^5.1.9"
   },
   "peerDependencies": {
     "bootstrap": ">=4.5",
-    "next": ">=10.x",
-    "next-translate": ">=1.x",
     "react": ">=17.x",
     "react-bootstrap": ">=1.x",
-    "react-dom": ">=17.x",
-    "react-router-dom": ">=5.x"
+    "styled-components": ">=5.x"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@topsoft4u"
+    ]
   }
 }
