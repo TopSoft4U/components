@@ -36,6 +36,11 @@ class NotificationManagerClass extends EventEmitter {
     this.emitChange();
   }
 
+  clear() {
+    this.listNotify = [];
+    this.emitChange();
+  }
+
   // endregion
 
   // region Types

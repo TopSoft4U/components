@@ -29,15 +29,18 @@
     "style"
   ],
   "scripts": {
-    "build": "yarn run clean && yarn run eslint && tsc",
-    "typecheck": "tsc -p ./ --noEmit",
-    "clean": "rimraf --no-glob ./dist",
+    "prepare": "husky install",
+    "pre-commit": "yarn generate_indexes && yarn eslint && yarn typecheck",
+    "generate_indexes": "barrelsby --delete --directory ./src",
     "eslint": "eslint --ext js,jsx,ts,tsx src --fix",
+    "typecheck": "tsc -p ./ --noEmit",
+    "build": "tsc",
+    "clean": "rimraf --no-glob ./dist",
     "deps:check": "npx npm-check-updates --dep prod,dev,optional",
-    "deps:update": "npx npm-check-updates --dep prod,dev,optional -u",
-    "generate_indexes": "barrelsby --delete --directory ./src"
+    "deps:update": "npx npm-check-updates --dep prod,dev,optional -u"
   },
   "dependencies": {
+    "husky": "^6.0.0",
     "js-cookie": "^2.2.1",
     "query-string": "^5.1.1"
   },
@@ -52,13 +55,16 @@
     "eslint": "^7.25.0",
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.2",
+    "react-redux": "^7.2.4",
     "styled-components": "^5.2.3",
-    "typescript": "^4.2.4"
+    "typescript": "^4.2.4",
+    "husky": "^6.0.0"
   },
   "peerDependencies": {
     "bootstrap": ">=4.5",
     "react": ">=17.x",
     "react-bootstrap": ">=1.x",
+    "react-redux": ">=7.x",
     "styled-components": ">=5.x"
   },
   "eslintConfig": {

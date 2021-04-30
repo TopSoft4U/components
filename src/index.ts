@@ -3,8 +3,6 @@
  */
 
 export * from "./CookieAlert";
-export * from "./NotificationContainer";
-export * from "./NotificationManager";
 export * from "./OffCanvas";
 export * from "./ProgressButton";
 export * from "./XInput";
@@ -16,5 +14,11 @@ export * from "./hooks/useQueryString";
 export * from "./hooks/useSessionStorage";
 export * from "./hooks/useToggle";
 export * from "./hooks/useWhyDidYouUpdate";
-export * from "./types/TS4UComponent";
+export * from "./Notifications/Notification.style";
+export * from "./Notifications/Notification";
+export * from "./Notifications/NotificationContainer.style";
+export * from "./Notifications/NotificationContainer";
+export * from "./Notifications/NotificationManager";
+export * from "./Notifications/useNotification";
 export * from "./types/ModelFieldError";
+export * from "./types/TS4UComponent";
