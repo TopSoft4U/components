@@ -1,6 +1,7 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 import {FormControlProps} from "react-bootstrap";
+import {XInputSC} from "./XInput.style";
 
 let lastId = 0;
 const uniqId = (prefix = "id") => {
@@ -27,7 +28,7 @@ export const XInput: React.FC<XInputProps> = ({label, required, error, success, 
   return <Form.Group>
     <Form.Label htmlFor={id}>
       {label}
-      {required && <span className="required">*</span>}
+      {required && <XInputSC.LabelRequired className="required">*</XInputSC.LabelRequired>}
     </Form.Label>
     <Form.Control {...props} {...inputProps} id={id} required={required} />
     {error && <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>}

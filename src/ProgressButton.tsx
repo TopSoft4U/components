@@ -1,26 +1,28 @@
 import React from "react";
-import Button, {ButtonProps} from "react-bootstrap/Button";
-import Spinner from "react-bootstrap/Spinner";
+import classNames from "classnames";
+import {ButtonProps} from "react-bootstrap/Button";
+import {TS4UComponent} from "./types/TS4UComponent";
+import {ProgressButtonSC} from "./ProgressButton.style";
 
 export const progressButtonWaitText = "Please wait";
 
-export const ProgressButton: React.FC<ProgressButtonProps> = ({inProgress, children, progressText, ...props}) => {
+export const ProgressButton: TS4UComponent<ProgressButtonProps> = ({inProgress, className, children, progressText, ...props}) => {
   let content = children, disabled = props.disabled;
 
   if (inProgress) {
     content = <>
-      <Spinner animation="border" />
+      <ProgressButtonSC.Spinner animation="border" />
       {progressText || progressButtonWaitText}
     </>;
     disabled = true;
   }
 
-  return <Button {...props} disabled={disabled} className="btn-progress">
+  return <ProgressButtonSC.Button {...props} disabled={disabled} className={classNames("btn-progress", className)}>
     {content}
-  </Button>;
+  </ProgressButtonSC.Button>;
 };
 
-type ProgressButtonProps = ButtonProps & {
+export type ProgressButtonProps = ButtonProps & {
   inProgress: boolean;
   progressText?: string;
 };

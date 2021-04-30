@@ -1,16 +1,24 @@
 import Cookies from "js-cookie";
 import React from "react";
-import Button from "react-bootstrap/Button";
+import classNames from "classnames";
+import {TS4UComponent} from "./types/TS4UComponent";
+import {CookieAlertSC} from "./CookieAlert.style";
 
 type CookiesProps = {
   text?: string;
   closeButtonText?: string;
+  closeButtonClassName?: string;
 }
 
 export const cookieAlertButtonText = "I understand";
 export const cookieAlertText = "We use cookies to track usage and preferences.";
 
-export const CookieAlert: React.FC<CookiesProps> = ({text, closeButtonText}) => {
+export const CookieAlert: TS4UComponent<CookiesProps> = (
+  {
+    className,
+    text = cookieAlertText,
+    closeButtonText = cookieAlertButtonText, closeButtonClassName
+  }) => {
   const [show, setShow] = React.useState(() => Cookies.get("cookie_accepted") !== "1");
 
   const close = React.useCallback(() => {
@@ -21,10 +29,10 @@ export const CookieAlert: React.FC<CookiesProps> = ({text, closeButtonText}) => 
   if (!show)
     return null;
 
-  return <div role="dialog" className="cookies" aria-live="polite">
-    <p>{text || cookieAlertText}</p>
-    <Button variant="outline-light" onClick={close}>
-      {closeButtonText || cookieAlertButtonText}
-    </Button>
-  </div>;
+  return <CookieAlertSC.Alert role="dialog" className={classNames(className, "bg-primary")} aria-live="polite">
+    <CookieAlertSC.Text>{text}</CookieAlertSC.Text>
+    <CookieAlertSC.CloseButton className={closeButtonClassName} variant="outline-light" onClick={close}>
+      {closeButtonText}
+    </CookieAlertSC.CloseButton>
+  </CookieAlertSC.Alert>;
 };

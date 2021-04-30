@@ -1,21 +1,26 @@
-$offcanvas-width: 250px !default;
-$offcanvas-height: 250px !default;
-$offcanvas-animation-duration: .3s;
-$offcanvas-transition: transform $offcanvas-animation-duration ease !default;
-$offcanvas-offcanvas-transition: opacity $offcanvas-animation-duration linear, visibility $offcanvas-animation-duration linear !default;
-$offcanvas-zindex: 1500 !default;
+import styled, {css} from "styled-components";
 
-.offcanvas {
+export type OffCanvasContainerProps = {
+  zIndex?: number;
+  transitionDuration?: number;
+  width?: string;
+  height?: string;
+};
+
+const Container = styled.div<OffCanvasContainerProps>`
   background: #fff;
   bottom: 0;
   position: fixed;
-  transition: $offcanvas-transition;
-  z-index: $offcanvas-zindex + 1;
+
+  ${({zIndex, transitionDuration}) => css`
+    transition: transform ${transitionDuration}ms ease;
+    z-index: ${zIndex + 1};
+  `}
 
   &.side-left {
     left: 0;
     transform: translateX(-100%);
-    width: $offcanvas-width;
+    width: ${({width}) => width};
 
     &.open {
       transform: translateX(0%);
@@ -25,7 +30,7 @@ $offcanvas-zindex: 1500 !default;
   &.side-right {
     right: 0;
     transform: translateX(100%);
-    width: $offcanvas-width;
+    width: ${({width}) => width};;
 
     &.open {
       transform: translateX(0%);
@@ -33,7 +38,7 @@ $offcanvas-zindex: 1500 !default;
   }
 
   &.side-top {
-    height: $offcanvas-height;
+    height: ${({height}) => height};
     left: 0;
     right: 0;
     top: 0;
@@ -45,7 +50,7 @@ $offcanvas-zindex: 1500 !default;
   }
 
   &.side-bottom {
-    height: $offcanvas-height;
+    height: ${({height}) => height};
     bottom: 0;
     left: 0;
     right: 0;
@@ -55,10 +60,9 @@ $offcanvas-zindex: 1500 !default;
       transform: translateY(0%);
     }
   }
-}
+`;
 
-.offcanvas-overlay {
-  transition: $offcanvas-offcanvas-transition;
+const Backdrop = styled.div<OffCanvasContainerProps>`
   background: rgba(0, 0, 0, 0.1);
   bottom: 0;
   left: 0;
@@ -66,16 +70,21 @@ $offcanvas-zindex: 1500 !default;
   position: fixed;
   right: 0;
   top: 0;
-  z-index: $offcanvas-zindex;
-  //display: none;
   visibility: hidden;
   opacity: 0;
-  //height: 0;
+
+  ${({zIndex, transitionDuration}) => css`
+    transition: opacity ${transitionDuration} linear, visibility ${transitionDuration} linear;
+    z-index: ${zIndex};
+  `}
 
   &.open {
-    //display: block;
     visibility: visible;
     opacity: 1;
-    //height: auto;
   }
-}
+`;
+
+export const OffCanvasSC = {
+  Container,
+  Backdrop,
+};

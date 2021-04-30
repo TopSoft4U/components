@@ -1,23 +1,33 @@
 import classNames from "classnames";
 import React, {SyntheticEvent} from "react";
+import {OffCanvasContainerProps, OffCanvasSC} from "./OffCanvas.style";
+import {TS4UComponent} from "./";
 
-type OffCanvasProps = {
+export type OffCanvasProps = {
   isOpen: boolean;
   toggle: React.EventHandler<SyntheticEvent>;
   side?: "left" | "right" | "top" | "bottom"
-  className?: string;
   offCanvasClassName?: string;
   withBackdrop?: boolean;
   withCloseButton?: boolean;
-};
+} & OffCanvasContainerProps;
 
-export const OffCanvas: React.FC<OffCanvasProps> = (
+export const OffCanvas: TS4UComponent<OffCanvasProps> = (
   {
     isOpen, toggle,
-    className, side = "right",
+    className, offCanvasClassName, side = "right",
     withBackdrop = true, withCloseButton = true,
-    children
+    children,
+    // SC
+    zIndex = 1500, transitionDuration = 300, height = "250px", width = "250px"
   }) => {
+
+  const scProps: OffCanvasContainerProps = React.useMemo(() => ({
+    zIndex,
+    transitionDuration,
+    height,
+    width
+  }), [height, transitionDuration, width, zIndex]);
 
   const onKeyDown = React.useCallback((e) => {
     if (!isOpen)
@@ -40,29 +50,26 @@ export const OffCanvas: React.FC<OffCanvasProps> = (
     };
   }, [onKeyDown]);
 
+  const sideClass = `side-${side}`;
+  const isOpenClass = isOpen ? "open" : undefined;
+
   const cn = classNames(
-    "offcanvas",
     className,
-    `side-${side}`,
-    {
-      "open": isOpen
-    }
+    sideClass,
+    isOpenClass
   );
 
   const offCn = classNames(
-    "offcanvas-overlay",
-    className,
-    `side-${side}`,
-    {
-      "open": isOpen
-    }
+    offCanvasClassName,
+    sideClass,
+    isOpenClass
   );
 
-  return <>
+  return <OffCanvasSC.Container>
     <div className={cn}>
       {children}
     </div>
 
-    {withBackdrop && <div aria-hidden={isOpen ? "true" : "false"} className={offCn} onClick={toggle} />}
-  </>;
+    {withBackdrop && <OffCanvasSC.Backdrop {...scProps} aria-hidden={isOpen ? "true" : "false"} className={offCn} onClick={toggle} />}
+  </OffCanvasSC.Container>;
 };

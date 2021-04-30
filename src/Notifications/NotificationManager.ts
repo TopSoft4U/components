@@ -80,4 +80,4 @@ export type NotificationType = NotificationObjectType & {
 }
 
 type NotificationTypeType = "success" | "warning" | "info" | "danger";
-type NotificationOnClick = (...args: unknown[]) => void;
+type NotificationOnClick = (...args: unknown[]) => void | Promise<void>;
