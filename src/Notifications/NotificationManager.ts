@@ -66,7 +66,7 @@ class NotificationManagerClass extends EventEmitter {
 export const NotificationManager = new NotificationManagerClass();
 
 type NotificationObjectType = {
-  message: string;
+  message: React.ReactNode | string;
   title?: string | null;
   timeout?: number;
   onClick?: NotificationOnClick;

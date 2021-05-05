@@ -2,8 +2,13 @@
   "name": "@topsoft4u/components",
   "license": "MIT",
   "version": "1.0.10",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "files": [
+    "dist",
+    "src",
+    "style"
+  ],
   "description": "Shared React components",
   "repository": "https://github.com/TopSoft4U/components",
   "author": {
@@ -23,18 +28,13 @@
     "React",
     "Components"
   ],
-  "files": [
-    "dist",
-    "src",
-    "style"
-  ],
   "scripts": {
     "prepare": "husky install",
     "pre-commit": "yarn generate_indexes && yarn eslint && yarn typecheck",
     "generate_indexes": "barrelsby --delete --directory ./src",
     "eslint": "eslint --ext js,jsx,ts,tsx src --fix",
     "typecheck": "tsc -p ./ --noEmit",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig.cjs.json",
     "clean": "rimraf --no-glob ./dist",
     "deps:check": "npx npm-check-updates --dep prod,dev,optional",
     "deps:update": "npx npm-check-updates --dep prod,dev,optional -u"
