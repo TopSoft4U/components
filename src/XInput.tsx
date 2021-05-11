@@ -2,6 +2,7 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import {FormControlProps} from "react-bootstrap";
 import {XInputSC} from "./XInput.style";
+import {TS4UComponent} from "./types/TS4UComponent";
 
 let lastId = 0;
 const uniqId = (prefix = "id") => {
@@ -9,7 +10,7 @@ const uniqId = (prefix = "id") => {
   return `${prefix}${lastId}`;
 };
 
-export const XInput: React.FC<XInputProps> = ({label, required, error, success, help, value, ...props}) => {
+export const XInput: TS4UComponent<XInputProps> = ({label, required, error, success, help, value, ...props}) => {
   const [id] = React.useState(() => uniqId("label"));
   const inputProps: FormControlProps = {
     value: value || "",
@@ -39,7 +40,7 @@ export const XInput: React.FC<XInputProps> = ({label, required, error, success, 
 
 type XInputProps = FormControlProps & {
   label: string;
-  required? :boolean;
+  required?: boolean;
   error?: string;
   success?: string;
   help?: string;

@@ -4,6 +4,8 @@
 
 export * from "./CookieAlert.style";
 export * from "./CookieAlert";
+export * from "./Loading.style";
+export * from "./Loading";
 export * from "./OffCanvas.style";
 export * from "./OffCanvas";
 export * from "./ProgressButton.style";
@@ -14,7 +16,6 @@ export * from "./hooks/useAsync";
 export * from "./hooks/useForm";
 export * from "./hooks/useFormWithErrors";
 export * from "./hooks/useLocalStorage";
-export * from "./hooks/useQueryString";
 export * from "./hooks/useSessionStorage";
 export * from "./hooks/useToggle";
 export * from "./hooks/useWhyDidYouUpdate";
