@@ -36,6 +36,7 @@
     "typecheck": "tsc -p ./ --noEmit",
     "build": "tsc -p tsconfig.json && tsc -p tsconfig.cjs.json",
     "watch": "tsc -w",
+    "watch:cjs": "tsc -w -p tsconfig.cjs.json",
     "clean": "rimraf --no-glob ./dist",
     "deps:check": "npx npm-check-updates --dep prod,dev,optional",
     "deps:update": "npx npm-check-updates --dep prod,dev,optional -u"
