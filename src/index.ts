@@ -27,6 +27,8 @@ export * from "./Notifications/NotificationManager";
 export * from "./Notifications/useNotification";
 export * from "./Select/Select.style";
 export * from "./Select/Select";
+export * from "./Select/SelectClearButton.style";
+export * from "./Select/SelectClearButton";
 export * from "./Select/SelectMultiItem.style";
 export * from "./Select/SelectMultiItem";
 export * from "./Select/SelectMultiItemList.style";
