@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "@topsoft4u/eslint-config": "^1.0.25",
+    "@topsoft4u/utils": "^1.0.14",
     "@types/js-cookie": "^2.2.6",
     "@types/node": "^15.0.2",
     "@types/react": "^17.0.5",
@@ -62,7 +63,8 @@
     "bootstrap": ">=4.5",
     "react": ">=17.x",
     "react-bootstrap": ">=1.x",
-    "styled-components": ">=5.x"
+    "styled-components": ">=5.x",
+    "@topsoft4u/utils": ">=1.x"
   },
   "eslintConfig": {
     "extends": [
