@@ -1,7 +1,7 @@
 {
   "name": "@topsoft4u/components",
   "license": "MIT",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "files": [
@@ -60,11 +60,11 @@
     "typescript": "^4.2.4"
   },
   "peerDependencies": {
+    "@topsoft4u/utils": ">=1.x",
     "bootstrap": ">=4.5",
     "react": ">=17.x",
     "react-bootstrap": ">=1.x",
-    "styled-components": ">=5.x",
-    "@topsoft4u/utils": ">=1.x"
+    "styled-components": ">=5.x"
   },
   "eslintConfig": {
     "extends": [
